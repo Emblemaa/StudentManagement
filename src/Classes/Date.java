@@ -2,6 +2,7 @@ package Classes;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 public class Date {
     private int day;
@@ -44,5 +45,21 @@ public class Date {
         LocalDateTime n = LocalDateTime.now();
         DateTimeFormatter dft = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         return dft.format(n);
+    }
+
+    public static Date stringToDate(String string)
+    {
+        String substr = "";
+        ArrayList<Integer> arr = new ArrayList<>();
+        for(int i = 0; i < string.length(); i++)
+        {
+            while(i < string.length() && string.charAt(i) != '/' ) {
+                substr += string.charAt(i);
+                i++;
+            }
+            arr.add(Integer.valueOf(substr));
+            substr = "";
+        }
+        return new Date(arr.get(0), arr.get(1), arr.get(2));
     }
 }
