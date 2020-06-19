@@ -1,10 +1,22 @@
 package Classes.Actors;
 
-import Classes.Date;
+
 import Interfaces.LecturerFunctions;
 
+import java.util.Date;
+
 public class Lecturer extends Account implements LecturerFunctions {
-    public Lecturer(String username, String password, String lastname, String firstname, Date dob, short role) {
-        super(username, password, lastname, firstname, dob, 2);
+    String degree;
+    public Lecturer(String username, String password, String lastname, String firstname, boolean gender, Date dob, String degree) {
+        super(username, password, lastname, firstname, gender, dob, 2);
+        this.degree = degree;
+    }
+
+    public String getDegree() {
+        return degree;
+    }
+
+    public void setDegree(String degree) {
+        this.degree = degree;
     }
 }

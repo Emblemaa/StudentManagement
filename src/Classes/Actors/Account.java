@@ -1,23 +1,33 @@
 package Classes.Actors;
 
-import Classes.Date;
 import Interfaces.GeneralFunctions;
+
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class Account implements GeneralFunctions {
     private String username;
     private String password;
     private String lastname;
     private String firstname;
+    boolean gender;
+    private String strDob;
     private Date dob;
     private int role;
 
-    public Account(String username, String password, String lastname, String firstname, Date dob, int role) {
+
+    public Account(String username, String password, String lastname, String firstname, boolean gender, Date dob, int role) {
         this.username = username;
         this.password = password;
         this.lastname = lastname;
         this.firstname = firstname;
         this.dob = dob;
         this.role = role;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        this.strDob = sdf.format(dob);
+        this.gender = gender;
     }
 
     public String getUsername() {
@@ -66,6 +76,22 @@ public class Account implements GeneralFunctions {
 
     public void setRole(int role) {
         this.role = role;
+    }
+
+    public String getStrDob() {
+        return strDob;
+    }
+
+    public void setStrDob(String strDob) {
+        this.strDob = strDob;
+    }
+
+    public boolean isGender() {
+        return gender;
+    }
+
+    public void setGender(boolean gender) {
+        this.gender = gender;
     }
 
     @Override

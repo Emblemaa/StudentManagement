@@ -1,8 +1,9 @@
 package Menu.LoginMenu;
 
+import Classes.Actors.Lecturer;
+import Classes.Actors.Staff;
 import Classes.Actors.Student;
 import Classes.Class.Class;
-import Classes.Date;
 import Classes.Initialization;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -16,7 +17,7 @@ import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
     @FXML
-    TableView<Student> studentTable;
+    TableView<Lecturer> studentTable;
 
     @FXML
     TableColumn<Student, String> ID;
@@ -35,17 +36,16 @@ public class LoginController implements Initializable {
         ID.setCellValueFactory(new PropertyValueFactory<>("Username"));
         lastname.setCellValueFactory(new PropertyValueFactory<>("lastname"));
         firstname.setCellValueFactory(new PropertyValueFactory<>("firstname"));
-        dob.setCellValueFactory(new PropertyValueFactory<>("dob"));
+        dob.setCellValueFactory(new PropertyValueFactory<>("strDob"));
 
         try
         {
-            ObservableList<Class> classes = Initialization.classList(getClass().getResource("Classes.xlsx"));
-            ObservableList<Student> students = classes.get(0).getStudentList();
-            studentTable.setItems(students);
+            ObservableList<Lecturer> classes = Initialization.lecturerList("src/DATABASE/Academic.xlsx");
+            studentTable.setItems(classes);
         }
         catch (Exception e)
         {
-            System.out.println("ahihi");
+            e.printStackTrace();;
         }
 
     }
