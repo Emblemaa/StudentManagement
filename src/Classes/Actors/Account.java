@@ -17,7 +17,6 @@ public class Account implements GeneralFunctions {
     private Date dob;
     private int role;
 
-
     public Account(String username, String password, String lastname, String firstname, boolean gender, Date dob, int role) {
         this.username = username;
         this.password = password;

@@ -1,6 +1,11 @@
 package Classes.Course;
 
+import java.util.Date;
+
 public class Course {
-    String courseID;
-    String lecturerID;
+    private String courseID;
+    private String courseName;
+    private String lecturerID;
+    private Date begin;
+    private Date end;
 }
